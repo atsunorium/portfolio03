@@ -12,6 +12,9 @@
             
         <!-- バリデーションエラーの表示に使用-->
         @include('common.errors')
+
+        {{-- バリデーションエラー --}}
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <!-- バリデーションエラーの表示に使用-->
     
     <!--全エリア[START]-->
@@ -43,21 +46,21 @@
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         金額
                       </label>
-                      <input name="item_amount" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                      <input name="item_amount" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="">
                     </div>
                     <!-- カラム３ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        数
+                        数量
                       </label>
-                      <input name="item_number" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                      <input name="item_number" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="">
                     </div>
                     <!-- カラム４ -->
                     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         発売日
                       </label>
-                      <input name="published" type="date" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                      <input name="published" type="date" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="">
                     </div>
                   </div>
                   <!-- カラム５ -->
@@ -78,7 +81,7 @@
             @foreach ($books as $book)
                 <x-collection id="{{ $book->id }}" >{{ $book->item_name }}<div>{{ $book->item_amount }}円</div>
                 <div>数量:{{ $book->item_number }}冊</div>
-                <div>発売日:{{ $book->published() }}</div>
+                <div>発売日:{{ $book->published }}</div>
                 </x-collection>
             @endforeach
         @endif

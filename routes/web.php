@@ -22,6 +22,9 @@ Route::post('/books', function (Request $request) {
     //バリデーション
     $validator = Validator::make($request->all(), [
         'item_name' => 'required|max:255',
+        'item_number' => 'required|max:9999',
+        'item_amount' => 'required|max:99999',
+        'published' => 'required',
     ]);
 
     //バリデーション:エラー 
@@ -35,7 +38,7 @@ Route::post('/books', function (Request $request) {
   // Eloquentモデル
   $books = new Book;
   $books->item_name = $request->item_name;
-  $books->item_number = '1';
+  $books->item_number = $request->item_number;
   $books->item_amount = $request->item_amount;
   $books->published = $request->published;
   $books->save(); 
