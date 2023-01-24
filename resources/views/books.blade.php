@@ -78,7 +78,7 @@
             @foreach ($books as $book)
                 <x-collection id="{{ $book->id }}" >{{ $book->item_name }}<div>{{ $book->item_amount }}円</div>
                 <div>数量:{{ $book->item_number }}冊</div>
-                <div>発売日:{{ $book->published->diffForHumans() }}</div>
+                <div>発売日:{{ $book->published() }}</div>
                 </x-collection>
             @endforeach
         @endif
